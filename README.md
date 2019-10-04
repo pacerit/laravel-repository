@@ -21,11 +21,13 @@ For more configuration, you can publish configuration file:
 #### Laravel
 Framework | Package
 :---------|:--------
-6.0.x     | ^1.x.x
+5.8.x     | ^1.x.x
+6.0.x     | ^2.x.x
 #### Lumen
 Framework | Package
 :---------|:--------
-6.0.x     | ^1.x.x
+5.8.x     | ^1.1.x
+6.0.x     | ^2.x.x
 
 ### Using repositories
 To use Repository in controller or other class you can use dependency injection or Container. Below is sample code of
