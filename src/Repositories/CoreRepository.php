@@ -357,9 +357,9 @@ abstract class CoreRepository implements CoreRepositoryInterface
      *
      * @param int $id
      *
-     * @return CoreRepositoryInterface
-     *
      * @throws Exception
+     *
+     * @return CoreRepositoryInterface
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
