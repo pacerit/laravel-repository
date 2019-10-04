@@ -5,8 +5,8 @@ Standalone repository pattern package for Laravel and Lumen framework.
 ![GitHub](https://img.shields.io/github/license/pacerit/laravel-repository?label=License)
 ![Packagist](https://img.shields.io/packagist/dt/pacerit/laravel-repository?label=Downloads)
 ![PHP from Packagist](https://img.shields.io/packagist/php-v/pacerit/laravel-repository?label=PHP)
-<!--[![StyleCI](https://github.styleci.io/repos/199045038/shield?branch=master)](https://github.styleci.io/repos/199045038)
-[![Build Status](https://travis-ci.com/pacerit/laravel-core.svg?branch=master)](https://travis-ci.com/pacerit/laravel-core)-->
+[![StyleCI](https://github.styleci.io/repos/212760382/shield?branch=master)](https://github.styleci.io/repos/212760382)
+[![Build Status](https://travis-ci.com/pacerit/laravel-repository.svg?branch=master)](https://travis-ci.com/pacerit/laravel-repository)
 
 ## Installation
 You can install this package by composer:
