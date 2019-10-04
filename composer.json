@@ -14,10 +14,10 @@
         "ext-json": "^1.5",
         "ext-libxml": "*",
         "ext-simplexml": "*",
-        "illuminate/contracts": "^6.0",
-        "illuminate/database": "^6.0",
-        "illuminate/support": "^6.0",
-        "illuminate/container": "^6.0"
+        "illuminate/contracts": "^5.8",
+        "illuminate/database": "^5.8",
+        "illuminate/support": "^5.8",
+        "illuminate/container": "^5.8"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.5"
