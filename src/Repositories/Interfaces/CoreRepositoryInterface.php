@@ -352,4 +352,19 @@ interface CoreRepositoryInterface
      * @since 2019-08-07
      */
     public function findWhereNotIn(string $column, array $where, array $columns = ['*']): Collection;
+
+    /**
+     * Chunk query results.
+     *
+     * @param int      $limit
+     * @param callable $callback
+     * @param array    $columns
+     *
+     * @return bool
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 08/10/2019
+     */
+    public function chunk(int $limit, callable $callback, array $columns = ['*']): bool;
 }

@@ -532,4 +532,22 @@ abstract class CoreRepository implements CoreRepositoryInterface
 
         return $this->getEntity()->whereNotIn($column, $where)->get($columns);
     }
+
+    /**
+     * Chunk query results.
+     *
+     * @param int      $limit
+     * @param callable $callback
+     * @param array    $columns
+     *
+     * @return bool
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 08/10/2019
+     */
+    public function chunk(int $limit, callable $callback, array $columns = ['*']): bool
+    {
+        return $this->getEntity()->select($columns)->chunk($limit, $callback);
+    }
 }
