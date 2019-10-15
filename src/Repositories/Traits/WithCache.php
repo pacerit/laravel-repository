@@ -234,35 +234,6 @@ trait WithCache
     }
 
     /**
-     * Get first entity record or null.
-     *
-     * @param array $where
-     *
-     * @return mixed|null
-     *
-     * @author Wiktor Pacer <kontakt@pacerit.pl>
-     *
-     * @since 2019-07-10
-     */
-    public function firstOrNull(array $where)
-    {
-        if ($this->skipCache || !$this->cacheActive()) {
-            return parent::firstOrNull($where);
-        }
-
-        $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
-
-        // Store or get from cache.
-        return Cache::tags([$this->getTag()])->remember(
-            $cacheKey,
-            $this->getCacheTime(),
-            function () use ($where) {
-                return parent::firstOrNull($where);
-            }
-        );
-    }
-
-    /**
      * Find where.
      *
      * @param array $where
@@ -437,19 +408,19 @@ trait WithCache
      *
      * @since 2019-08-07
      */
-    private function getTag(): int
+    private function getTag(): string
     {
         if ($this->skipUserTag) {
-            return 0;
+            return class_basename($this).'_0';
         }
 
         foreach ($this->getCacheGuards() as $guard) {
             if (auth($guard)->check()) {
-                return auth($guard)->user()->getAuthIdentifier();
+                return class_basename($this).'_'.auth($guard)->user()->getAuthIdentifier();
             }
         }
 
-        return 0;
+        return class_basename($this).'_0';
     }
 
     /**
