@@ -77,7 +77,7 @@ trait WithCache
     protected function getCacheKey(string $method, array $parameters): string
     {
         // Get actual repository class name.
-        $className = class_basename($this);
+        $className = get_class($this);
 
         // Get serialized criteria.
         $criteria = $this->getSerializedCriteria();
