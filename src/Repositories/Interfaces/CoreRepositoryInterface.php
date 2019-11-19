@@ -367,4 +367,17 @@ interface CoreRepositoryInterface
      * @since 08/10/2019
      */
     public function chunk(int $limit, callable $callback, array $columns = ['*']): bool;
+
+    /**
+     * Count results.
+     *
+     * @param array $columns
+     *
+     * @return int
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 19/11/2019
+     */
+    public function count(array $columns = ['*']): int;
 }

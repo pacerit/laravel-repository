@@ -550,4 +550,22 @@ abstract class CoreRepository implements CoreRepositoryInterface
     {
         return $this->getEntity()->select($columns)->chunk($limit, $callback);
     }
+
+    /**
+     * Count results.
+     *
+     * @param array $columns
+     *
+     * @return int
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 19/11/2019
+     */
+    public function count(array $columns = ['*']): int
+    {
+        $this->applyCriteria();
+
+        return $this->getEntity()->count($columns);
+    }
 }

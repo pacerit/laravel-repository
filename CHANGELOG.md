@@ -1,4 +1,6 @@
 # Changelog
+## v.2.0.5
+    - add count() function
 ## v.2.0.4
     - fix first() function
 ## v.2.0.3
