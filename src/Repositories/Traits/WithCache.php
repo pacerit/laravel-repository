@@ -2,6 +2,7 @@
 
 namespace PacerIT\LaravelRepository\Repositories\Traits;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use PacerIT\LaravelRepository\Repositories\Interfaces\CoreRepositoryInterface;
@@ -180,13 +181,13 @@ trait WithCache
      *
      * @param array $columns
      *
-     * @return Collection
+     * @return Model|null
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-08-07
      */
-    public function first(array $columns = ['*']): Collection
+    public function first(array $columns = ['*'])
     {
         if ($this->skipCache || !$this->cacheActive()) {
             return parent::frist($columns);
