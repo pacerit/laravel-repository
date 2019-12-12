@@ -1,4 +1,6 @@
 # Changelog
+## v.1.0.7
+    - fix misspel in first() function in WithCache trait
 ## v.1.0.6
     - fix first() function in WithCache trait
     - fix wrong configuration file name
