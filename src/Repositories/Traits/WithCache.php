@@ -190,7 +190,7 @@ trait WithCache
     public function first(array $columns = ['*'])
     {
         if ($this->skipCache || !$this->cacheActive()) {
-            return parent::frist($columns);
+            return parent::first($columns);
         }
 
         $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
