@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "43771a36febed29ca84ee932f2e7a9d4",
+    "content-hash": "b288d8677673f6660903bac91a326e5b",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -2117,7 +2117,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.2",
+        "php": "^7.1",
         "ext-json": "^1.5",
         "ext-libxml": "*",
         "ext-simplexml": "*"
