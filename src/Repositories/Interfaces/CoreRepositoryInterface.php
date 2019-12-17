@@ -134,6 +134,9 @@ interface CoreRepositoryInterface
      *
      * @return CoreRepositoryInterface
      *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-07-05

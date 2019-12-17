@@ -1,4 +1,6 @@
 # Changelog
+## v.1.0.8
+    - fix clearCriteria() function
 ## v.1.0.7
     - fix misspel in first() function in WithCache trait
 ## v.1.0.6

@@ -229,6 +229,9 @@ abstract class CoreRepository implements CoreRepositoryInterface
      *
      * @return CoreRepositoryInterface
      *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-07-05
@@ -236,6 +239,7 @@ abstract class CoreRepository implements CoreRepositoryInterface
     public function clearCriteria(): CoreRepositoryInterface
     {
         $this->criteria = new Collection();
+        $this->makeEntity();
 
         return $this;
     }
