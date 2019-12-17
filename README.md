@@ -29,6 +29,52 @@ Framework | Package
 5.8.x     | ^1.1.x
 6.0.x     | ^2.x.x
 
+### Implementation
+To use Repositories, create repository class that:
+- Extend CoreRepository class
+- Implements interface that extend CoreRepositoryInterface
+
+For example, this is implementation of repository for Example entity:
+
+ExampleRepositoryInterface:
+```php
+interface ExampleRepositoryInterface extends CoreRepositoryInterface
+{}
+```
+
+ExampleRepository class. This class has to implement entity() method, that return namespace of entity
+that will be used by repository.
+```php
+class ExampleRepository extends CoreRepository implements ExampleRepositoryInterface
+{
+    /**
+     * Model entity class that will be use in repository
+     *
+     * @return CoreRepositoryInterface
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     * @since 2019-07-05
+     */
+    public function entity(): string
+    {
+        return ExampleInterface::class;
+    }
+
+}
+```
+
+Interface and repository class must be bind in you app ServiceProvider:
+```php
+/**
+ * Register any application services.
+ *
+ * @return void
+ */
+public function register()
+{
+    $this->app->bind(ExampleRepositoryInterfaceclass, ExampleRepository::class);
+}
+```
+
 ### Using repositories
 To use Repository in controller or other class you can use dependency injection or Container. Below is sample code of
 using service in controller.
