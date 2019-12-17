@@ -15,7 +15,7 @@ You can install this package by composer:
     
 For more configuration, you can publish configuration file:
     
-    php artisan vendor:publish --provider "PacerIT\LaravelCore\Providers\LaravelRepositoryServiceProvider"
+    php artisan vendor:publish --provider "PacerIT\LaravelRepository\Providers\LaravelRepositoryServiceProvider"
 
 ### Version compatibility
 #### Laravel
