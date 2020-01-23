@@ -121,6 +121,8 @@ class ExampleController extends Controller {
 * findWhereNotIn(string $column, array $where, array $columns)
 * chunk(int $limit, callable $callback, array $columns) - chunk query results
 * count(array $columns) - count results
+* paginate($perPage, $columns, $pageName, $page) - paginate results
+* simplePaginate($perPage, $columns, $pageName, $page) - paginate results
 
 ##### Additional methods (Laravel only)
 * datatable() - return EloquentDataTable instance for records. In order to user with method,
@@ -153,6 +155,8 @@ of choice. Trait will handle cache for methods:
 * findWhere()
 * findWhereIn()
 * findWhereNotIn()
+* paginate()
+* simplePaginate()
 
 Repository automatically flush cache, when method create(), updateOrCreate(), update(),
 delete() is call.
