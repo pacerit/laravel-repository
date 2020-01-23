@@ -387,10 +387,10 @@ interface CoreRepositoryInterface
     /**
      * Paginate results.
      *
-     * @param null $perPage
-     * @param array $columns
+     * @param null   $perPage
+     * @param array  $columns
      * @param string $pageName
-     * @param null $page
+     * @param null   $page
      *
      * @return mixed
      *
@@ -403,10 +403,10 @@ interface CoreRepositoryInterface
     /**
      * Paginate results (simple).
      *
-     * @param null $perPage
-     * @param array $columns
+     * @param null   $perPage
+     * @param array  $columns
      * @param string $pageName
-     * @param null $page
+     * @param null   $page
      *
      * @return mixed
      *
