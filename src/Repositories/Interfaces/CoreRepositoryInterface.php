@@ -383,4 +383,36 @@ interface CoreRepositoryInterface
      * @since 19/11/2019
      */
     public function count(array $columns = ['*']): int;
+
+    /**
+     * Paginate results.
+     *
+     * @param null $perPage
+     * @param array $columns
+     * @param string $pageName
+     * @param null $page
+     *
+     * @return mixed
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 23/01/2020
+     */
+    public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null);
+
+    /**
+     * Paginate results (simple).
+     *
+     * @param null $perPage
+     * @param array $columns
+     * @param string $pageName
+     * @param null $page
+     *
+     * @return mixed
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 23/01/2020
+     */
+    public function simplePaginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null);
 }

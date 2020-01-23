@@ -1,4 +1,6 @@
 # Changelog
+## v.1.0.8
+    - add paginate() and simplePaginate() functions - both with caching option
 ## v.1.0.7
     - fix misspel in first() function in WithCache trait
     - fix clearCriteria() function

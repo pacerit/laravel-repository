@@ -401,6 +401,70 @@ trait WithCache
     }
 
     /**
+     * Paginate results.
+     *
+     * @param null $perPage
+     * @param array $columns
+     * @param string $pageName
+     * @param null $page
+     *
+     * @return mixed
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 23/01/2020
+     */
+    public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
+    {
+        if ($this->skipCache || !$this->cacheActive()) {
+            return parent::paginate($perPage, $columns, $pageName, $page);
+        }
+
+        $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
+
+        // Store or get from cache.
+        return Cache::tags([$this->getTag()])->remember(
+            $cacheKey,
+            $this->getCacheTime(),
+            function () use ($perPage, $columns, $pageName, $page) {
+                return parent::paginate($perPage, $columns, $pageName, $page);
+            }
+        );
+    }
+
+    /**
+     * Paginate results (simple).
+     *
+     * @param null $perPage
+     * @param array $columns
+     * @param string $pageName
+     * @param null $page
+     *
+     * @return mixed
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 23/01/2020
+     */
+    public function simplePaginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
+    {
+        if ($this->skipCache || !$this->cacheActive()) {
+            return parent::simplePaginate($perPage, $columns, $pageName, $page);
+        }
+
+        $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
+
+        // Store or get from cache.
+        return Cache::tags([$this->getTag()])->remember(
+            $cacheKey,
+            $this->getCacheTime(),
+            function () use ($perPage, $columns, $pageName, $page) {
+                return parent::simplePaginate($perPage, $columns, $pageName, $page);
+            }
+        );
+    }
+
+    /**
      * Try to get actual authenticated user ID.
      *
      * @return int
