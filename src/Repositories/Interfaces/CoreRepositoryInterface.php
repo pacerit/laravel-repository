@@ -86,10 +86,10 @@ interface CoreRepositoryInterface
      *
      * @param string $criteriaNamespace
      *
-     * @return CoreRepositoryInterface
-     *
      * @throws BindingResolutionException
      * @throws RepositoryEntityException
+     *
+     * @return CoreRepositoryInterface
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
