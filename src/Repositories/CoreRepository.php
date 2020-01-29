@@ -150,6 +150,9 @@ abstract class CoreRepository implements CoreRepositoryInterface
      *
      * @return CoreRepositoryInterface
      *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-07-05
@@ -159,6 +162,8 @@ abstract class CoreRepository implements CoreRepositoryInterface
         $this->criteria = $this->criteria->reject(function ($item) use ($criteriaNamespace) {
             return get_class($item) === $criteriaNamespace;
         });
+
+        $this->makeEntity();
 
         return $this;
     }
