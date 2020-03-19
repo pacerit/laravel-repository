@@ -148,6 +148,9 @@ abstract class CoreRepository implements CoreRepositoryInterface
      *
      * @param string $criteriaNamespace
      *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
+     *
      * @return CoreRepositoryInterface
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
@@ -159,6 +162,8 @@ abstract class CoreRepository implements CoreRepositoryInterface
         $this->criteria = $this->criteria->reject(function ($item) use ($criteriaNamespace) {
             return get_class($item) === $criteriaNamespace;
         });
+
+        $this->makeEntity();
 
         return $this;
     }
@@ -571,5 +576,47 @@ abstract class CoreRepository implements CoreRepositoryInterface
         $this->applyCriteria();
 
         return $this->getEntity()->count($columns);
+    }
+
+    /**
+     * Paginate results.
+     *
+     * @param null   $perPage
+     * @param array  $columns
+     * @param string $pageName
+     * @param null   $page
+     *
+     * @return mixed
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 23/01/2020
+     */
+    public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
+    {
+        $this->applyCriteria();
+
+        return $this->getEntity()->paginate($perPage, $columns, $pageName, $page);
+    }
+
+    /**
+     * Paginate results (simple).
+     *
+     * @param null   $perPage
+     * @param array  $columns
+     * @param string $pageName
+     * @param null   $page
+     *
+     * @return mixed
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 23/01/2020
+     */
+    public function simplePaginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
+    {
+        $this->applyCriteria();
+
+        return $this->getEntity()->simplePaginate($perPage, $columns, $pageName, $page);
     }
 }

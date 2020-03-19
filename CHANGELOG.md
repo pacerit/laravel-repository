@@ -1,4 +1,7 @@
 # Changelog
+## v.2.0.8
+    - add paginate() and simplePaginate() functions - both with caching option
+    - fix popCriteria() function - applied criteria was not cleared properly
 ## v.2.0.7
     - fix misspell in first() function in WithCache trait
     - fix clearCriteria() function
