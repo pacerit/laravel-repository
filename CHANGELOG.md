@@ -1,4 +1,6 @@
 # Changelog
+## v.3.0.0
+    - update dependencies for Laravel and Lumen 7.x.x compatibility
 ## v.2.0.8
     - add paginate() and simplePaginate() functions - both with caching option
     - fix popCriteria() function - applied criteria was not cleared properly
