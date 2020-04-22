@@ -154,6 +154,9 @@ interface CoreRepositoryInterface
      *
      * @return Collection
      *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-07-05
@@ -166,6 +169,9 @@ interface CoreRepositoryInterface
      * @param array $columns
      *
      * @return Collection
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
@@ -180,6 +186,9 @@ interface CoreRepositoryInterface
      *
      * @return Model|null
      *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-08-07
@@ -192,6 +201,9 @@ interface CoreRepositoryInterface
      * @param array $parameters
      *
      * @return mixed
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
@@ -207,6 +219,9 @@ interface CoreRepositoryInterface
      *
      * @return mixed
      *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-08-01
@@ -216,10 +231,13 @@ interface CoreRepositoryInterface
     /**
      * Update entity.
      *
-     * @param int   $id
+     * @param int $id
      * @param array $parameters
      *
      * @return mixed
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
@@ -248,6 +266,9 @@ interface CoreRepositoryInterface
      * @param array $where
      *
      * @return mixed
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
@@ -323,6 +344,9 @@ interface CoreRepositoryInterface
      *
      * @return Collection
      *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 2019-08-07
@@ -333,10 +357,13 @@ interface CoreRepositoryInterface
      * Find where In.
      *
      * @param string $column
-     * @param array  $where
-     * @param array  $columns
+     * @param array $where
+     * @param array $columns
      *
      * @return Collection
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
@@ -348,10 +375,13 @@ interface CoreRepositoryInterface
      * Find where not In.
      *
      * @param string $column
-     * @param array  $where
-     * @param array  $columns
+     * @param array $where
+     * @param array $columns
      *
      * @return Collection
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
@@ -362,11 +392,14 @@ interface CoreRepositoryInterface
     /**
      * Chunk query results.
      *
-     * @param int      $limit
+     * @param int $limit
      * @param callable $callback
-     * @param array    $columns
+     * @param array $columns
      *
      * @return bool
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
@@ -381,6 +414,9 @@ interface CoreRepositoryInterface
      *
      * @return int
      *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
+     *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
      * @since 19/11/2019
@@ -390,12 +426,15 @@ interface CoreRepositoryInterface
     /**
      * Paginate results.
      *
-     * @param null   $perPage
-     * @param array  $columns
+     * @param null $perPage
+     * @param array $columns
      * @param string $pageName
-     * @param null   $page
+     * @param null $page
      *
      * @return mixed
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *
@@ -406,12 +445,15 @@ interface CoreRepositoryInterface
     /**
      * Paginate results (simple).
      *
-     * @param null   $perPage
-     * @param array  $columns
+     * @param null $perPage
+     * @param array $columns
      * @param string $pageName
-     * @param null   $page
+     * @param null $page
      *
      * @return mixed
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
      *

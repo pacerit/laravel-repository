@@ -1,4 +1,8 @@
 # Changelog
+## v.3.0.1
+    - possibility to disable cache from .env
+    - update WithCache trait
+    - fix problem when Model was not reset after function call
 ## v.3.0.0
     - update dependencies for Laravel and Lumen 7.x.x compatibility
 ## v.2.0.8
