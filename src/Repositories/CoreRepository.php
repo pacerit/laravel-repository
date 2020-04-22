@@ -255,6 +255,9 @@ abstract class CoreRepository implements CoreRepositoryInterface
      *
      * @param array $columns
      *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
+     *
      * @return Collection
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
@@ -263,13 +266,20 @@ abstract class CoreRepository implements CoreRepositoryInterface
      */
     public function all(array $columns = ['*']): Collection
     {
-        return $this->getEntity()->all($columns);
+        $results = $this->getEntity()->all($columns);
+
+        $this->makeEntity();
+
+        return $results;
     }
 
     /**
      * Return eloquent collection of matching records.
      *
      * @param array $columns
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @return Collection
      *
@@ -281,13 +291,20 @@ abstract class CoreRepository implements CoreRepositoryInterface
     {
         $this->applyCriteria();
 
-        return $this->getEntity()->get($columns);
+        $results = $this->getEntity()->get($columns);
+
+        $this->makeEntity();
+
+        return $results;
     }
 
     /**
      * Get first record.
      *
      * @param array $columns
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @return Model|null
      *
@@ -299,13 +316,20 @@ abstract class CoreRepository implements CoreRepositoryInterface
     {
         $this->applyCriteria();
 
-        return $this->getEntity()->first($columns);
+        $results = $this->getEntity()->first($columns);
+
+        $this->makeEntity();
+
+        return $results;
     }
 
     /**
      * Save new entity.
      *
      * @param array $parameters
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @return mixed
      *
@@ -318,7 +342,11 @@ abstract class CoreRepository implements CoreRepositoryInterface
         $this->entity = $this->getEntity()->newInstance($parameters);
         $this->getEntity()->save();
 
-        return $this->getEntity();
+        $results = $this->getEntity();
+
+        $this->makeEntity();
+
+        return $results;
     }
 
     /**
@@ -326,6 +354,9 @@ abstract class CoreRepository implements CoreRepositoryInterface
      *
      * @param array $where
      * @param array $values
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @return mixed
      *
@@ -337,7 +368,11 @@ abstract class CoreRepository implements CoreRepositoryInterface
     {
         $this->entity = $this->getEntity()->updateOrCreate($where, $values);
 
-        return $this->getEntity();
+        $results = $this->getEntity();
+
+        $this->makeEntity();
+
+        return $results;
     }
 
     /**
@@ -345,6 +380,9 @@ abstract class CoreRepository implements CoreRepositoryInterface
      *
      * @param int   $id
      * @param array $parameters
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @return mixed
      *
@@ -358,7 +396,11 @@ abstract class CoreRepository implements CoreRepositoryInterface
         $this->getEntity()->fill($parameters);
         $this->getEntity()->save();
 
-        return $this->getEntity();
+        $results = $this->getEntity();
+
+        $this->makeEntity();
+
+        return $results;
     }
 
     /**
@@ -379,6 +421,8 @@ abstract class CoreRepository implements CoreRepositoryInterface
         $this->entity = $this->getEntity()->findOrFail($id);
         $this->getEntity()->delete();
 
+        $this->makeEntity();
+
         return $this;
     }
 
@@ -386,6 +430,9 @@ abstract class CoreRepository implements CoreRepositoryInterface
      * Get first entity record or new entity instance.
      *
      * @param array $where
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @return mixed
      *
@@ -395,7 +442,11 @@ abstract class CoreRepository implements CoreRepositoryInterface
      */
     public function firstOrNew(array $where)
     {
-        return $this->getEntity()->firstOrNew($where);
+        $results = $this->getEntity()->firstOrNew($where);
+
+        $this->makeEntity();
+
+        return $results;
     }
 
     /**
@@ -489,6 +540,9 @@ abstract class CoreRepository implements CoreRepositoryInterface
      * @param array $where
      * @param array $columns
      *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
+     *
      * @return Collection
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
@@ -499,7 +553,11 @@ abstract class CoreRepository implements CoreRepositoryInterface
     {
         $this->applyCriteria();
 
-        return $this->getEntity()->where($where)->get($columns);
+        $results = $this->getEntity()->where($where)->get($columns);
+
+        $this->makeEntity();
+
+        return $results;
     }
 
     /**
@@ -508,6 +566,9 @@ abstract class CoreRepository implements CoreRepositoryInterface
      * @param string $column
      * @param array  $where
      * @param array  $columns
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @return Collection
      *
@@ -519,7 +580,11 @@ abstract class CoreRepository implements CoreRepositoryInterface
     {
         $this->applyCriteria();
 
-        return $this->getEntity()->whereIn($column, $where)->get();
+        $results = $this->getEntity()->whereIn($column, $where)->get();
+
+        $this->makeEntity();
+
+        return $results;
     }
 
     /**
@@ -528,6 +593,9 @@ abstract class CoreRepository implements CoreRepositoryInterface
      * @param string $column
      * @param array  $where
      * @param array  $columns
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @return Collection
      *
@@ -539,7 +607,11 @@ abstract class CoreRepository implements CoreRepositoryInterface
     {
         $this->applyCriteria();
 
-        return $this->getEntity()->whereNotIn($column, $where)->get($columns);
+        $results = $this->getEntity()->whereNotIn($column, $where)->get($columns);
+
+        $this->makeEntity();
+
+        return $results;
     }
 
     /**
@@ -549,6 +621,9 @@ abstract class CoreRepository implements CoreRepositoryInterface
      * @param callable $callback
      * @param array    $columns
      *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
+     *
      * @return bool
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
@@ -557,13 +632,20 @@ abstract class CoreRepository implements CoreRepositoryInterface
      */
     public function chunk(int $limit, callable $callback, array $columns = ['*']): bool
     {
-        return $this->getEntity()->select($columns)->chunk($limit, $callback);
+        $results = $this->getEntity()->select($columns)->chunk($limit, $callback);
+
+        $this->makeEntity();
+
+        return $results;
     }
 
     /**
      * Count results.
      *
      * @param array $columns
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @return int
      *
@@ -575,7 +657,11 @@ abstract class CoreRepository implements CoreRepositoryInterface
     {
         $this->applyCriteria();
 
-        return $this->getEntity()->count($columns);
+        $results = $this->getEntity()->count($columns);
+
+        $this->makeEntity();
+
+        return $results;
     }
 
     /**
@@ -585,6 +671,9 @@ abstract class CoreRepository implements CoreRepositoryInterface
      * @param array  $columns
      * @param string $pageName
      * @param null   $page
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @return mixed
      *
@@ -596,7 +685,11 @@ abstract class CoreRepository implements CoreRepositoryInterface
     {
         $this->applyCriteria();
 
-        return $this->getEntity()->paginate($perPage, $columns, $pageName, $page);
+        $results = $this->getEntity()->paginate($perPage, $columns, $pageName, $page);
+
+        $this->makeEntity();
+
+        return $results;
     }
 
     /**
@@ -606,6 +699,9 @@ abstract class CoreRepository implements CoreRepositoryInterface
      * @param array  $columns
      * @param string $pageName
      * @param null   $page
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
      *
      * @return mixed
      *
@@ -617,6 +713,10 @@ abstract class CoreRepository implements CoreRepositoryInterface
     {
         $this->applyCriteria();
 
-        return $this->getEntity()->simplePaginate($perPage, $columns, $pageName, $page);
+        $results = $this->getEntity()->simplePaginate($perPage, $columns, $pageName, $page);
+
+        $this->makeEntity();
+
+        return $results;
     }
 }

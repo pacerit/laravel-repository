@@ -108,9 +108,15 @@ trait WithCache
                 function ($criteria) {
                     $reflectionClass = new ReflectionObject($criteria);
 
+                    $parameters = [];
+                    if ($reflectionClass->getConstructor() !== null) {
+                        $parameters = $reflectionClass->getConstructor()->getParameters();
+                    }
+
                     return [
                         'criteria'   => $reflectionClass->getName(),
-                        'parameters' => $reflectionClass->getProperties(),
+                        'properties' => $reflectionClass->getProperties(),
+                        'parameters' => $parameters,
                     ];
                 }
             )

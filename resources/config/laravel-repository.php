@@ -27,7 +27,7 @@ return [
                 | that user WithCache trait.
                 |
             */
-            'active' => true,
+            'active' => env('REPOSITORY_CACHE', true),
 
             /*
                 |--------------------------------------------------------------------------
