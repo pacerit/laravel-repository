@@ -201,6 +201,12 @@ To force fetch data from database, skipping cached data, use skipCache() method.
 $this-exampleService->getRepository->skipCache()->findWhere(...)
 ```
 
+##### Disable cache
+To quick disable cache i.ex for debugging, set REPOSITORY_CACHE variable for false in .env
+```dotenv
+REPOSITORY_CACHE=false
+```
+
 ## Changelog
 
 Go to the [Changelog](CHANGELOG.md) for a full change history of the package.
