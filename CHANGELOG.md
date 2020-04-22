@@ -1,4 +1,8 @@
 # Changelog
+## v.2.0.9
+    - possibility to disable cache from .env
+    - update WithCache trait
+    - fix problem when Model was not reset after function call
 ## v.2.0.8
     - add paginate() and simplePaginate() functions - both with caching option
     - fix popCriteria() function - applied criteria was not cleared properly
