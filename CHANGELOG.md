@@ -1,4 +1,6 @@
 # Changelog
+## v.3.0.2
+    - update criteria serialization in WithCache trait to prevent Closure serialization error
 ## v.3.0.1
     - possibility to disable cache from .env
     - update WithCache trait
