@@ -113,7 +113,14 @@ trait WithCache
                         $parameters = $reflectionClass->getConstructor()->getParameters();
                     }
 
+                    try {
+                        $hash = serialize($criteria);
+                    } catch (\Exception $exception) {
+                        $hash = md5((string) $criteria);
+                    }
+
                     return [
+                        'hash'       => $hash,
                         'criteria'   => $reflectionClass->getName(),
                         'properties' => $reflectionClass->getProperties(),
                         'parameters' => $parameters,
