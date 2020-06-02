@@ -97,7 +97,7 @@ trait WithCache
      *
      * @since 02/06/2020
      */
-    public function clearUserTad(): CoreRepositoryInterface
+    public function clearUserTag(): CoreRepositoryInterface
     {
         $this->userTag = null;
 
