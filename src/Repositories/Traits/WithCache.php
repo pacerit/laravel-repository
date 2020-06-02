@@ -32,6 +32,13 @@ trait WithCache
     protected $skipUserTag = false;
 
     /**
+     * User ID for cache key.
+     *
+     * @var int|null
+     */
+    protected $userTag = null;
+
+    /**
      * Skip cache.
      *
      * @return CoreRepositoryInterface
@@ -59,6 +66,40 @@ trait WithCache
     public function skipUserTag(): CoreRepositoryInterface
     {
         $this->skipUserTag = true;
+
+        return $this;
+    }
+
+    /**
+     * Manually set user tag.
+     *
+     * @param int $tag
+     *
+     * @return CoreRepositoryInterface
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 02/06/2020
+     */
+    public function setUserTag(int $tag): CoreRepositoryInterface
+    {
+        $this->userTag = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Clear manually set user tag.
+     *
+     * @return CoreRepositoryInterface
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 02/06/2020
+     */
+    public function clearUserTad(): CoreRepositoryInterface
+    {
+        $this->userTag = null;
 
         return $this;
     }
@@ -490,6 +531,11 @@ trait WithCache
     {
         if ($this->skipUserTag) {
             return class_basename($this).'_0';
+        }
+
+        // If user tag was set manually, user it.
+        if ($this->userTag !== null) {
+            return class_basename($this).'_'.$this->userTag;
         }
 
         foreach ($this->getCacheGuards() as $guard) {
