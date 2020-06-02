@@ -194,6 +194,9 @@ class ExampleRepository extends CoreRepository implements ExampleRepositoryInter
 }
 ```
 
+In some situation (i.e. in Jobs or Commands) you may want to manually update user data, and flush tagged cache for him.
+You can use setUserTag () function to manually set user ID for cache tag. To clear it use clearUserTag() function.
+
 ##### Skipping cache
 To force fetch data from database, skipping cached data, use skipCache() method. Example:
 
