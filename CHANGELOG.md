@@ -1,4 +1,6 @@
 # Changelog
+## v.3.0.4
+    - add possibility to manualy clear cache for repository
 ## v.3.0.3
     - add possibility to manually set user tag in WithCache trait - for caching data for given user
     when is not autheniticated (i.e. in Jobs, Commands)

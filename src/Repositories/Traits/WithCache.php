@@ -105,6 +105,22 @@ trait WithCache
     }
 
     /**
+     * Clear cache.
+     *
+     * @return $this|CoreRepositoryInterface
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 03/06/2020
+     */
+    public function clearCache(): CoreRepositoryInterface
+    {
+        Cache::tags([$this->getTag()])->flush();
+
+        return $this;
+    }
+
+    /**
      * Generate cache key.
      *
      * @param string $method
@@ -393,7 +409,7 @@ trait WithCache
      */
     public function create(array $parameters = [])
     {
-        Cache::tags([$this->getTag()])->flush();
+        $this->clearCache();
 
         return parent::create($parameters);
     }
@@ -412,7 +428,7 @@ trait WithCache
      */
     public function updateOrCreate(array $where = [], array $values = [])
     {
-        Cache::tags([$this->getTag()])->flush();
+        $this->clearCache();
 
         return parent::updateOrCreate($where, $values);
     }
@@ -431,7 +447,7 @@ trait WithCache
      */
     public function update(int $id, array $parameters = [])
     {
-        Cache::tags([$this->getTag()])->flush();
+        $this->clearCache();
 
         return parent::update($id, $parameters);
     }
@@ -449,7 +465,7 @@ trait WithCache
      */
     public function delete(int $id): CoreRepositoryInterface
     {
-        Cache::tags([$this->getTag()])->flush();
+        $this->clearCache();
 
         return parent::delete($id);
     }
