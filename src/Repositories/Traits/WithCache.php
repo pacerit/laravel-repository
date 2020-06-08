@@ -32,6 +32,13 @@ trait WithCache
     protected $skipUserTag = false;
 
     /**
+     * User ID for cache key.
+     *
+     * @var int|null
+     */
+    protected $userTag = null;
+
+    /**
      * Skip cache.
      *
      * @return CoreRepositoryInterface
@@ -59,6 +66,56 @@ trait WithCache
     public function skipUserTag(): CoreRepositoryInterface
     {
         $this->skipUserTag = true;
+
+        return $this;
+    }
+
+    /**
+     * Manually set user tag.
+     *
+     * @param int $tag
+     *
+     * @return CoreRepositoryInterface
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 02/06/2020
+     */
+    public function setUserTag(int $tag): CoreRepositoryInterface
+    {
+        $this->userTag = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Clear manually set user tag.
+     *
+     * @return CoreRepositoryInterface
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 02/06/2020
+     */
+    public function clearUserTad(): CoreRepositoryInterface
+    {
+        $this->userTag = null;
+
+        return $this;
+    }
+
+    /**
+     * Clear cache.
+     *
+     * @return $this|CoreRepositoryInterface
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 03/06/2020
+     */
+    public function clearCache(): CoreRepositoryInterface
+    {
+        Cache::tags([$this->getTag()])->flush();
 
         return $this;
     }
@@ -352,7 +409,7 @@ trait WithCache
      */
     public function create(array $parameters = [])
     {
-        Cache::tags([$this->getTag()])->flush();
+        $this->clearCache();
 
         return parent::create($parameters);
     }
@@ -371,7 +428,7 @@ trait WithCache
      */
     public function updateOrCreate(array $where = [], array $values = [])
     {
-        Cache::tags([$this->getTag()])->flush();
+        $this->clearCache();
 
         return parent::updateOrCreate($where, $values);
     }
@@ -390,7 +447,7 @@ trait WithCache
      */
     public function update(int $id, array $parameters = [])
     {
-        Cache::tags([$this->getTag()])->flush();
+        $this->clearCache();
 
         return parent::update($id, $parameters);
     }
@@ -408,7 +465,7 @@ trait WithCache
      */
     public function delete(int $id): CoreRepositoryInterface
     {
-        Cache::tags([$this->getTag()])->flush();
+        $this->clearCache();
 
         return parent::delete($id);
     }
@@ -490,6 +547,11 @@ trait WithCache
     {
         if ($this->skipUserTag) {
             return class_basename($this).'_0';
+        }
+
+        // If user tag was set manually, user it.
+        if ($this->userTag !== null) {
+            return class_basename($this).'_'.$this->userTag;
         }
 
         foreach ($this->getCacheGuards() as $guard) {
