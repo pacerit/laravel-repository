@@ -719,4 +719,36 @@ abstract class CoreRepository implements CoreRepositoryInterface
 
         return $results;
     }
+
+    /**
+     * Get records with trashed entities.
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 08/06/2020
+     */
+    public function withTrashed(): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->withTrashed();
+
+        return $this;
+    }
+
+    /**
+     * Get only trashed entities.
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 08/06/2020
+     */
+    public function onlyTrashed(): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->onlyTrashed();
+
+        return $this;
+    }
 }
