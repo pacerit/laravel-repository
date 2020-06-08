@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 use PacerIT\LaravelRepository\Tests\Resources\Entities\Test;
 
 /**
- * Class CoreRepositoryTest
+ * Class CoreRepositoryTest.
  *
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  *
@@ -14,7 +14,6 @@ use PacerIT\LaravelRepository\Tests\Resources\Entities\Test;
  */
 class CoreRepositoryTest extends AbstractTest
 {
-
     /**
      * Test makeEntity() function.
      *

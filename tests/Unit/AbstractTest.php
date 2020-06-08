@@ -7,7 +7,7 @@ use Orchestra\Testbench\TestCase;
 use PacerIT\LaravelRepository\Tests\Resources\Repositories\TestRepository;
 
 /**
- * Class AbstractTest
+ * Class AbstractTest.
  *
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  *
@@ -42,14 +42,14 @@ abstract class AbstractTest extends TestCase
     /**
      * Get package providers.
      *
-     * @param Application  $app
+     * @param Application $app
      *
      * @return array
      */
     protected function getPackageProviders($app)
     {
         return [
-            "PacerIT\LaravelRepository\Providers\LaravelRepositoryServiceProvider"
+            "PacerIT\LaravelRepository\Providers\LaravelRepositoryServiceProvider",
         ];
     }
 }

@@ -7,7 +7,7 @@ use PacerIT\LaravelRepository\Repositories\Interfaces\CoreRepositoryInterface;
 use PacerIT\LaravelRepository\Tests\Resources\Entities\Test;
 
 /**
- * Class TestRepository
+ * Class TestRepository.
  *
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  *

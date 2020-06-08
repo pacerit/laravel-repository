@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 /**
- * Class CreateTestsTable
+ * Class CreateTestsTable.
  *
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  *

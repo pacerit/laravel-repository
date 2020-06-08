@@ -5,7 +5,7 @@ namespace PacerIT\LaravelRepository\Tests\Resources\Entities;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Test
+ * Class Test.
  *
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  *
@@ -26,7 +26,7 @@ class Test extends Model
      * @var array
      */
     protected $fillable = [
-        'name'
+        'name',
     ];
 
     /**
@@ -35,6 +35,6 @@ class Test extends Model
      * @var array
      */
     protected $casts = [
-        'name' => 'string'
+        'name' => 'string',
     ];
 }
