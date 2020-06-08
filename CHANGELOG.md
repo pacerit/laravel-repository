@@ -1,4 +1,6 @@
 # Changelog
+## v.3.0.5
+    - add withTrashed() and onlyTrashed() moethods for Soft deleted entities
 ## v.3.0.4
     - add possibility to manualy clear cache for repository
 ## v.3.0.3

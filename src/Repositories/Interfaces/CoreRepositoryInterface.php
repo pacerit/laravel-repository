@@ -460,4 +460,26 @@ interface CoreRepositoryInterface
      * @since 23/01/2020
      */
     public function simplePaginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null);
+
+    /**
+     * Get records with trashed entities.
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 08/06/2020
+     */
+    public function withTrashed(): self;
+
+    /**
+     * Get only trashed entities.
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 08/06/2020
+     */
+    public function onlyTrashed(): self;
 }
