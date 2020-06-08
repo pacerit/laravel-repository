@@ -1,4 +1,9 @@
 # Changelog
+## v.1.0.11
+    - add withTrashed() and onlyTrashed() moethods for Soft deleted entities
+    - add possibility to manualy clear cache for repository
+    - add possibility to manually set user tag in WithCache trait - for caching data for given user
+    when is not autheniticated (i.e. in Jobs, Commands)
 ## v.1.0.10
     - update criteria serialization in WithCache trait to prevent Closure serialization error
 ## v.1.0.9
