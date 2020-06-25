@@ -1,4 +1,13 @@
 # Changelog
+## v.3.0.6
+    - add new functions
+        * has($relation, $operator, $count, $bolean, $callback) - where has relation
+        * orHas($relation, $operator, $count) - or where has relation
+        * whereHas($relation, $callback, $operator, $count)
+        * orWhereHas($relation, $callback, $operator, $count)
+        * whereDoesntHave($relation, $callback)
+        * orWhereDoesntHave($relation, $callback)
+        * withCount($relations)
 ## v.3.0.5
     - add withTrashed() and onlyTrashed() moethods for Soft deleted entities
 ## v.3.0.4
