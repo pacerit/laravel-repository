@@ -125,6 +125,13 @@ class ExampleController extends Controller {
 * count(array $columns) - count results
 * paginate($perPage, $columns, $pageName, $page) - paginate results
 * simplePaginate($perPage, $columns, $pageName, $page) - paginate results
+* has($relation, $operator, $count, $bolean, $callback) - where has relation
+* orHas($relation, $operator, $count) - or where has relation
+* whereHas($relation, $callback, $operator, $count)
+* orWhereHas($relation, $callback, $operator, $count)
+* whereDoesntHave($relation, $callback)
+* orWhereDoesntHave($relation, $callback)
+* withCount($relations)
 
 ##### Additional methods (Laravel only)
 * datatable() - return EloquentDataTable instance for records. In order to user with method,
