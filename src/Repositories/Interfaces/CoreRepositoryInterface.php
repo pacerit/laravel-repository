@@ -487,10 +487,10 @@ interface CoreRepositoryInterface
     /**
      * Has relation.
      *
-     * @param string $relation
-     * @param string $operator
-     * @param int $count
-     * @param string $boolean
+     * @param string       $relation
+     * @param string       $operator
+     * @param int          $count
+     * @param string       $boolean
      * @param Closure|null $callback
      *
      * @return $this
@@ -506,7 +506,7 @@ interface CoreRepositoryInterface
      *
      * @param string $relation
      * @param string $operator
-     * @param int $count
+     * @param int    $count
      *
      * @return $this
      *
@@ -519,10 +519,10 @@ interface CoreRepositoryInterface
     /**
      * Where has relation.
      *
-     * @param string $relation
+     * @param string       $relation
      * @param Closure|null $callback
-     * @param string $operator
-     * @param int $count
+     * @param string       $operator
+     * @param int          $count
      *
      * @return $this
      *
@@ -535,10 +535,10 @@ interface CoreRepositoryInterface
     /**
      * Or where has relation.
      *
-     * @param string $relation
+     * @param string       $relation
      * @param Closure|null $callback
-     * @param string $operator
-     * @param int $count
+     * @param string       $operator
+     * @param int          $count
      *
      * @return $this
      *
@@ -551,7 +551,7 @@ interface CoreRepositoryInterface
     /**
      * Where doesnt have relation.
      *
-     * @param string $relation
+     * @param string       $relation
      * @param Closure|null $callback
      *
      * @return $this
@@ -565,7 +565,7 @@ interface CoreRepositoryInterface
     /**
      * Or where doesnt have relation.
      *
-     * @param string $relation
+     * @param string       $relation
      * @param Closure|null $callback
      *
      * @return $this

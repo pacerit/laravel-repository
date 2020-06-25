@@ -756,10 +756,10 @@ abstract class CoreRepository implements CoreRepositoryInterface
     /**
      * Has relation.
      *
-     * @param string $relation
-     * @param string $operator
-     * @param int $count
-     * @param string $boolean
+     * @param string       $relation
+     * @param string       $operator
+     * @param int          $count
+     * @param string       $boolean
      * @param Closure|null $callback
      *
      * @return $this
@@ -780,7 +780,7 @@ abstract class CoreRepository implements CoreRepositoryInterface
      *
      * @param string $relation
      * @param string $operator
-     * @param int $count
+     * @param int    $count
      *
      * @return $this
      *
@@ -798,10 +798,10 @@ abstract class CoreRepository implements CoreRepositoryInterface
     /**
      * Where has relation.
      *
-     * @param string $relation
+     * @param string       $relation
      * @param Closure|null $callback
-     * @param string $operator
-     * @param int $count
+     * @param string       $operator
+     * @param int          $count
      *
      * @return $this
      *
@@ -819,10 +819,10 @@ abstract class CoreRepository implements CoreRepositoryInterface
     /**
      * Or where has relation.
      *
-     * @param string $relation
+     * @param string       $relation
      * @param Closure|null $callback
-     * @param string $operator
-     * @param int $count
+     * @param string       $operator
+     * @param int          $count
      *
      * @return $this
      *
@@ -840,7 +840,7 @@ abstract class CoreRepository implements CoreRepositoryInterface
     /**
      * Where doesnt have relation.
      *
-     * @param string $relation
+     * @param string       $relation
      * @param Closure|null $callback
      *
      * @return $this
@@ -859,7 +859,7 @@ abstract class CoreRepository implements CoreRepositoryInterface
     /**
      * Or where doesnt have relation.
      *
-     * @param string $relation
+     * @param string       $relation
      * @param Closure|null $callback
      *
      * @return $this
