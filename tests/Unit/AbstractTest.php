@@ -4,6 +4,7 @@ namespace PacerIT\LaravelRepository\Tests\Unit;
 
 use Illuminate\Foundation\Application;
 use Orchestra\Testbench\TestCase;
+use PacerIT\LaravelRepository\Tests\Resources\Repositories\CachedTestRepository;
 use PacerIT\LaravelRepository\Tests\Resources\Repositories\TestRepository;
 
 /**
@@ -21,6 +22,11 @@ abstract class AbstractTest extends TestCase
     protected $testRepository;
 
     /**
+     * @var CachedTestRepository
+     */
+    protected $cachedTestRepository;
+
+    /**
      * Set up test.
      *
      * @author Wiktor Pacer <kontakt@pacerit.pl>
@@ -35,8 +41,10 @@ abstract class AbstractTest extends TestCase
         $this->withFactories(__DIR__.'/../Resources/database/factories');
 
         $this->artisan('migrate')->run();
+        $this->artisan('cache:clear')->run();
 
         $this->testRepository = $this->app->make(TestRepository::class);
+        $this->cachedTestRepository = $this->app->make(CachedTestRepository::class);
     }
 
     /**

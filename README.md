@@ -125,6 +125,8 @@ class ExampleController extends Controller {
 * count(array $columns) - count results
 * paginate($perPage, $columns, $pageName, $page) - paginate results
 * simplePaginate($perPage, $columns, $pageName, $page) - paginate results
+* withTrashed() - return results with soft deleted entities records
+* onlyTrashed() - return results of only soft deleted entities records
 
 ##### Additional methods (Laravel only)
 * datatable() - return EloquentDataTable instance for records. In order to user with method,

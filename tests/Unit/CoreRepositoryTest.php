@@ -2,6 +2,7 @@
 
 namespace PacerIT\LaravelRepository\Tests\Unit;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use PacerIT\LaravelRepository\Tests\Resources\Entities\Test;
 
@@ -263,7 +264,7 @@ class CoreRepositoryTest extends AbstractTest
                 $existingEntity->id
             );
 
-        $this->assertDatabaseMissing(
+        $this->assertSoftDeleted(
             'tests',
             [
                 'id'   => $existingEntity->id,
@@ -318,5 +319,227 @@ class CoreRepositoryTest extends AbstractTest
 
         $this->assertInstanceOf(Test::class, $entity);
         $this->assertEquals($existingEntity->toArray(), $entity->toArray());
+    }
+
+    /**
+     * Test findWhere() function when entity not exist.
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 08/06/2020
+     */
+    public function testFindWhereFunctionWhenEntityNotExist()
+    {
+        $entities = $this->testRepository
+            ->makeEntity()
+            ->findWhere(
+                [
+                    'name' => 'example',
+                ]
+            );
+
+        $this->assertInstanceOf(Collection::class, $entities);
+        $this->assertTrue($entities->isEmpty());
+    }
+
+    /**
+     * Test findWhere() function when entity exist.
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 08/06/2020
+     */
+    public function testFindWhereFunctionWhenEntityExist()
+    {
+        factory(Test::class)
+            ->create(
+                [
+                    'name' => 'example',
+                ]
+            );
+
+        $entities = $this->testRepository
+            ->makeEntity()
+            ->findWhere(
+                [
+                    'name' => 'example',
+                ]
+            );
+
+        $this->assertInstanceOf(Collection::class, $entities);
+        $this->assertTrue($entities->isNotEmpty());
+    }
+
+    /**
+     * Test findWhereIn() function.
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 08/06/2020
+     */
+    public function testFindWhereInFunction()
+    {
+        $entity = factory(Test::class)
+            ->create(
+                [
+                    'name' => 'example',
+                ]
+            );
+
+        factory(Test::class)
+            ->create(
+                [
+                    'name' => 'example2',
+                ]
+            );
+
+        $entities = $this->testRepository
+            ->makeEntity()
+            ->findWhereIn(
+                'name',
+                [
+                    'example',
+                ]
+            );
+
+        $this->assertInstanceOf(Collection::class, $entities);
+
+        $first = $entities->first();
+        $this->assertEquals($entity->toArray(), $first->toArray());
+    }
+
+    /**
+     * Test findWhereNotIn() function.
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 08/06/2020
+     */
+    public function testFindWhereNotInFunction()
+    {
+        factory(Test::class)
+            ->create(
+                [
+                    'name' => 'example',
+                ]
+            );
+
+        $entity = factory(Test::class)
+            ->create(
+                [
+                    'name' => 'example2',
+                ]
+            );
+
+        $entities = $this->testRepository
+            ->makeEntity()
+            ->findWhereNotIn(
+                'name',
+                [
+                    'example',
+                ]
+            );
+
+        $this->assertInstanceOf(Collection::class, $entities);
+
+        $first = $entities->first();
+        $this->assertEquals($entity->toArray(), $first->toArray());
+    }
+
+    /**
+     * Test count() function.
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 08/06/2020
+     */
+    public function testCountFunction()
+    {
+        factory(Test::class)
+            ->create(
+                [
+                    'name' => 'example',
+                ]
+            );
+
+        factory(Test::class)
+            ->create(
+                [
+                    'name' => 'example2',
+                ]
+            );
+
+        $entities = $this->testRepository
+            ->makeEntity()
+            ->count();
+
+        $this->assertIsInt($entities);
+        $this->assertEquals(2, $entities);
+    }
+
+    /**
+     * Test withTrashed() function.
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 08/06/2020
+     */
+    public function testWithTrashedFunction()
+    {
+        factory(Test::class)
+            ->create(
+                [
+                    'name' => 'example',
+                ]
+            );
+
+        factory(Test::class)
+            ->create(
+                [
+                    'name'       => 'example2',
+                    'deleted_at' => Carbon::now(),
+                ]
+            );
+
+        $entities = $this->testRepository
+            ->makeEntity()
+            ->withTrashed()
+            ->count();
+
+        $this->assertIsInt($entities);
+        $this->assertEquals(2, $entities);
+    }
+
+    /**
+     * Test withTrashed() function.
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 08/06/2020
+     */
+    public function testOnlyTrashedFunction()
+    {
+        factory(Test::class)
+            ->create(
+                [
+                    'name' => 'example',
+                ]
+            );
+
+        factory(Test::class)
+            ->create(
+                [
+                    'name'       => 'example2',
+                    'deleted_at' => Carbon::now(),
+                ]
+            );
+
+        $entities = $this->testRepository
+            ->makeEntity()
+            ->onlyTrashed()
+            ->count();
+
+        $this->assertIsInt($entities);
+        $this->assertEquals(1, $entities);
     }
 }
