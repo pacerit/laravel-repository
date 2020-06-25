@@ -2,6 +2,7 @@
 
 namespace PacerIT\LaravelRepository\Repositories;
 
+use Closure;
 use Exception;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\BindingResolutionException;
@@ -748,6 +749,146 @@ abstract class CoreRepository implements CoreRepositoryInterface
     public function onlyTrashed(): CoreRepositoryInterface
     {
         $this->entity = $this->getEntity()->onlyTrashed();
+
+        return $this;
+    }
+
+    /**
+     * Has relation.
+     *
+     * @param string       $relation
+     * @param string       $operator
+     * @param int          $count
+     * @param string       $boolean
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 25/06/2020
+     */
+    public function has($relation, $operator = '>=', $count = 1, $boolean = 'and', Closure $callback = null): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->has($relation, $operator, $count, $boolean, $callback);
+
+        return $this;
+    }
+
+    /**
+     * Or hase relation.
+     *
+     * @param string $relation
+     * @param string $operator
+     * @param int    $count
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 25/06/2020
+     */
+    public function orHas($relation, $operator = '>=', $count = 1): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->orHas($relation, $operator, $count);
+
+        return $this;
+    }
+
+    /**
+     * Where has relation.
+     *
+     * @param string       $relation
+     * @param Closure|null $callback
+     * @param string       $operator
+     * @param int          $count
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 25/06/2020
+     */
+    public function whereHas($relation, Closure $callback = null, $operator = '>=', $count = 1): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->whereHas($relation, $callback, $operator, $count);
+
+        return $this;
+    }
+
+    /**
+     * Or where has relation.
+     *
+     * @param string       $relation
+     * @param Closure|null $callback
+     * @param string       $operator
+     * @param int          $count
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 25/06/2020
+     */
+    public function orWhereHas($relation, Closure $callback = null, $operator = '>=', $count = 1): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->orWhereHas($relation, $callback, $operator, $count);
+
+        return $this;
+    }
+
+    /**
+     * Where doesnt have relation.
+     *
+     * @param string       $relation
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 25/06/2020
+     */
+    public function whereDoesntHave($relation, Closure $callback = null): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->whereDoesntHave($relation, $callback);
+
+        return $this;
+    }
+
+    /**
+     * Or where doesnt have relation.
+     *
+     * @param string       $relation
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 25/06/2020
+     */
+    public function orWhereDoesntHave($relation, Closure $callback = null): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->orWhereDoesntHave($relation, $callback);
+
+        return $this;
+    }
+
+    /**
+     * Count given relation.
+     *
+     * @param string|array $relations
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 25/06/2020
+     */
+    public function withCount($relations): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->withCount($relations);
 
         return $this;
     }

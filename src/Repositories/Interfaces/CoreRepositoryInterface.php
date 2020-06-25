@@ -2,6 +2,7 @@
 
 namespace PacerIT\LaravelRepository\Repositories\Interfaces;
 
+use Closure;
 use Exception;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Eloquent\Builder;
@@ -482,4 +483,109 @@ interface CoreRepositoryInterface
      * @since 08/06/2020
      */
     public function onlyTrashed(): self;
+
+    /**
+     * Has relation.
+     *
+     * @param string       $relation
+     * @param string       $operator
+     * @param int          $count
+     * @param string       $boolean
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 25/06/2020
+     */
+    public function has($relation, $operator = '>=', $count = 1, $boolean = 'and', Closure $callback = null): self;
+
+    /**
+     * Or hase relation.
+     *
+     * @param string $relation
+     * @param string $operator
+     * @param int    $count
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 25/06/2020
+     */
+    public function orHas($relation, $operator = '>=', $count = 1): self;
+
+    /**
+     * Where has relation.
+     *
+     * @param string       $relation
+     * @param Closure|null $callback
+     * @param string       $operator
+     * @param int          $count
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 25/06/2020
+     */
+    public function whereHas($relation, Closure $callback = null, $operator = '>=', $count = 1): self;
+
+    /**
+     * Or where has relation.
+     *
+     * @param string       $relation
+     * @param Closure|null $callback
+     * @param string       $operator
+     * @param int          $count
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 25/06/2020
+     */
+    public function orWhereHas($relation, Closure $callback = null, $operator = '>=', $count = 1): self;
+
+    /**
+     * Where doesnt have relation.
+     *
+     * @param string       $relation
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 25/06/2020
+     */
+    public function whereDoesntHave($relation, Closure $callback = null): self;
+
+    /**
+     * Or where doesnt have relation.
+     *
+     * @param string       $relation
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 25/06/2020
+     */
+    public function orWhereDoesntHave($relation, Closure $callback = null): self;
+
+    /**
+     * Count given relation.
+     *
+     * @param string|array $relations
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 25/06/2020
+     */
+    public function withCount($relations): self;
 }
