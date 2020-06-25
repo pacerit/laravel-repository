@@ -19,17 +19,17 @@ For more configuration, you can publish configuration file:
 
 ### Version compatibility
 #### Laravel
-Framework | Package
-:---------|:--------
-5.8.x     | ^1.x.x
-6.0.x     | ^2.x.x
-7.x.x     | ^3.x.x
+Framework | Package | Note
+:---------|:--------|:-----
+5.8.x     | ^1.x.x  | No longer maintained.
+6.0.x     | ^2.x.x  |
+7.x.x     | ^3.x.x  |
 #### Lumen
-Framework | Package
-:---------|:--------
-5.8.x     | ^1.1.x
-6.0.x     | ^2.x.x
-7.x.x     | ^3.x.x
+Framework | Package | Note
+:---------|:--------|:-----
+5.8.x     | ^1.1.x  | No longer maintained.
+6.0.x     | ^2.x.x  |
+7.x.x     | ^3.x.x  |
 
 ### Implementation
 To use Repositories, create repository class that:
