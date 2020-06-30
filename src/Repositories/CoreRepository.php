@@ -633,6 +633,8 @@ abstract class CoreRepository implements CoreRepositoryInterface
      */
     public function chunk(int $limit, callable $callback, array $columns = ['*']): bool
     {
+        $this->applyCriteria();
+
         $results = $this->getEntity()->select($columns)->chunk($limit, $callback);
 
         $this->makeEntity();
