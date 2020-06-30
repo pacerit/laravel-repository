@@ -1,4 +1,6 @@
 # Changelog
+## v.3.0.7
+    - add missing applyCriteria() in chunk() function
 ## v.3.0.6
     - add new functions
         * has($relation, $operator, $count, $bolean, $callback) - where has relation
