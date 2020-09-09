@@ -520,7 +520,7 @@ interface CoreRepositoryInterface
      * Add a relationship count / exists condition to the query.
      *
      * @param $relation
-     * @param string $boolean
+     * @param string       $boolean
      * @param Closure|null $callback
      *
      * @return $this
@@ -609,9 +609,9 @@ interface CoreRepositoryInterface
      *
      * @param $relation
      * @param $types
-     * @param string $operator
-     * @param int $count
-     * @param string $boolean
+     * @param string       $operator
+     * @param int          $count
+     * @param string       $boolean
      * @param Closure|null $callback
      *
      * @return $this
@@ -628,7 +628,7 @@ interface CoreRepositoryInterface
      * @param $relation
      * @param $types
      * @param string $operator
-     * @param int $count
+     * @param int    $count
      *
      * @return $this
      *
@@ -643,7 +643,7 @@ interface CoreRepositoryInterface
      *
      * @param $relation
      * @param $types
-     * @param string $boolean
+     * @param string       $boolean
      * @param Closure|null $callback
      *
      * @return $this
@@ -674,8 +674,8 @@ interface CoreRepositoryInterface
      * @param $relation
      * @param $types
      * @param Closure|null $callback
-     * @param string $operator
-     * @param int $count
+     * @param string       $operator
+     * @param int          $count
      *
      * @return $this
      *
@@ -691,8 +691,8 @@ interface CoreRepositoryInterface
      * @param $relation
      * @param $types
      * @param Closure|null $callback
-     * @param string $operator
-     * @param int $count
+     * @param string       $operator
+     * @param int          $count
      *
      * @return $this
      *
