@@ -798,6 +798,44 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
+     * Add a relationship count / exists condition to the query.
+     *
+     * @param $relation
+     * @param string $boolean
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function doesntHave($relation, $boolean = 'and', Closure $callback = null): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->doesntHave($relation, $boolean, $callback);
+
+        return $this;
+    }
+
+    /**
+     * Add a relationship count / exists condition to the query with an "or".
+     *
+     * @param $relation
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function orDoesntHave($relation): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->orDoesntHave($relation);
+
+        return $this;
+    }
+
+    /**
      * Where has relation.
      *
      * @param string       $relation
@@ -873,6 +911,174 @@ abstract class CoreRepository implements CoreRepositoryInterface
     public function orWhereDoesntHave($relation, Closure $callback = null): CoreRepositoryInterface
     {
         $this->entity = $this->getEntity()->orWhereDoesntHave($relation, $callback);
+
+        return $this;
+    }
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query.
+     *
+     * @param $relation
+     * @param $types
+     * @param string $operator
+     * @param int $count
+     * @param string $boolean
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function hasMorph($relation, $types, $operator = '>=', $count = 1, $boolean = 'and', Closure $callback = null): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->hasMorph($relation, $types, $operator, $count, $boolean, $callback);
+
+        return $this;
+    }
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query with an "or".
+     *
+     * @param $relation
+     * @param $types
+     * @param string $operator
+     * @param int $count
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function orHasMorph($relation, $types, $operator = '>=', $count = 1): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->orHasMorph($relation, $types, $operator, $count);
+
+        return $this;
+    }
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query.
+     *
+     * @param $relation
+     * @param $types
+     * @param string $boolean
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function doesntHaveMorph($relation, $types, $boolean = 'and', Closure $callback = null): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->doesntHaveMorph($relation, $types, $boolean, $callback);
+
+        return $this;
+    }
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query with an "or".
+     *
+     * @param $relation
+     * @param $types
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function orDoesntHaveMorph($relation, $types): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->orDoesntHaveMorph($relation, $types);
+
+        return $this;
+    }
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query with where clauses.
+     *
+     * @param $relation
+     * @param $types
+     * @param Closure|null $callback
+     * @param string $operator
+     * @param int $count
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function whereHasMorph($relation, $types, Closure $callback = null, $operator = '>=', $count = 1): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->whereHasMorph($relation, $types, $callback, $operator, $count);
+
+        return $this;
+    }
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query with where clauses and an "or".
+     *
+     * @param $relation
+     * @param $types
+     * @param Closure|null $callback
+     * @param string $operator
+     * @param int $count
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function orWhereHasMorph($relation, $types, Closure $callback = null, $operator = '>=', $count = 1): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->orWhereHasMorph($relation, $types, $callback, $operator, $count);
+
+        return $this;
+    }
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query with where clauses.
+     *
+     * @param $relation
+     * @param $types
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function whereDoesntHaveMorph($relation, $types, Closure $callback = null): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->whereDoesntHaveMorph($relation, $types, $callback);
+
+        return $this;
+    }
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query with where clauses and an "or".
+     *
+     * @param $relation
+     * @param $types
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function orWhereDoesntHaveMorph($relation, $types, Closure $callback = null): CoreRepositoryInterface
+    {
+        $this->entity = $this->getEntity()->orWhereDoesntHaveMorph($relation, $types, $callback);
 
         return $this;
     }

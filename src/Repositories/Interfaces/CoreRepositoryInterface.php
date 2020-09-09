@@ -517,6 +517,34 @@ interface CoreRepositoryInterface
     public function orHas($relation, $operator = '>=', $count = 1): self;
 
     /**
+     * Add a relationship count / exists condition to the query.
+     *
+     * @param $relation
+     * @param string $boolean
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function doesntHave($relation, $boolean = 'and', Closure $callback = null): self;
+
+    /**
+     * Add a relationship count / exists condition to the query with an "or".
+     *
+     * @param $relation
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function orDoesntHave($relation): self;
+
+    /**
      * Where has relation.
      *
      * @param string       $relation
@@ -575,6 +603,134 @@ interface CoreRepositoryInterface
      * @since 25/06/2020
      */
     public function orWhereDoesntHave($relation, Closure $callback = null): self;
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query.
+     *
+     * @param $relation
+     * @param $types
+     * @param string $operator
+     * @param int $count
+     * @param string $boolean
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function hasMorph($relation, $types, $operator = '>=', $count = 1, $boolean = 'and', Closure $callback = null): self;
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query with an "or".
+     *
+     * @param $relation
+     * @param $types
+     * @param string $operator
+     * @param int $count
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function orHasMorph($relation, $types, $operator = '>=', $count = 1): self;
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query.
+     *
+     * @param $relation
+     * @param $types
+     * @param string $boolean
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function doesntHaveMorph($relation, $types, $boolean = 'and', Closure $callback = null): self;
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query with an "or".
+     *
+     * @param $relation
+     * @param $types
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function orDoesntHaveMorph($relation, $types): self;
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query with where clauses.
+     *
+     * @param $relation
+     * @param $types
+     * @param Closure|null $callback
+     * @param string $operator
+     * @param int $count
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function whereHasMorph($relation, $types, Closure $callback = null, $operator = '>=', $count = 1): self;
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query with where clauses and an "or".
+     *
+     * @param $relation
+     * @param $types
+     * @param Closure|null $callback
+     * @param string $operator
+     * @param int $count
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function orWhereHasMorph($relation, $types, Closure $callback = null, $operator = '>=', $count = 1): self;
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query with where clauses.
+     *
+     * @param $relation
+     * @param $types
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function whereDoesntHaveMorph($relation, $types, Closure $callback = null): self;
+
+    /**
+     * Add a polymorphic relationship count / exists condition to the query with where clauses and an "or".
+     *
+     * @param $relation
+     * @param $types
+     * @param Closure|null $callback
+     *
+     * @return $this
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 09/09/2020
+     */
+    public function orWhereDoesntHaveMorph($relation, $types, Closure $callback = null): self;
 
     /**
      * Count given relation.

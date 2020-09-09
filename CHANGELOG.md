@@ -1,4 +1,18 @@
 # Changelog
+## v.4.0.0
+    - update dependencies for Laravel and Lumen 8.x.x compatibility
+    - remove unnecessary composer.lock file
+    - add new functions
+        * doesntHave($relation, $boolean, $callback)
+        * orDoesntHave($relation)
+        * hasMorph($relation, $types, $operator, $count, $boolean, $callback)
+        * orHasMorph($relation, $types, $operator, $count)
+        * doesntHaveMorph($relation, $types, $boolean, $callback)
+        * orDoesntHaveMorph($relation, $types)
+        * whereHasMorph($relation, $types, $callback, $operator, $count)
+        * orWhereHasMorph($relation, $types, $callback, $operator, $count)
+        * whereDoesntHaveMorph($relation, $types, $callback)
+        * orWhereDoesntHaveMorph($relation, $types, $callback)
 ## v.3.0.7
     - add missing applyCriteria() in chunk() function
 ## v.3.0.6
