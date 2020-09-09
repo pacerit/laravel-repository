@@ -1,4 +1,17 @@
 # Changelog
+## v.2.0.14
+    - remove unnecessary composer.lock file
+    - add new functions
+        * doesntHave($relation, $boolean, $callback)
+        * orDoesntHave($relation)
+        * hasMorph($relation, $types, $operator, $count, $boolean, $callback)
+        * orHasMorph($relation, $types, $operator, $count)
+        * doesntHaveMorph($relation, $types, $boolean, $callback)
+        * orDoesntHaveMorph($relation, $types)
+        * whereHasMorph($relation, $types, $callback, $operator, $count)
+        * orWhereHasMorph($relation, $types, $callback, $operator, $count)
+        * whereDoesntHaveMorph($relation, $types, $callback)
+        * orWhereDoesntHaveMorph($relation, $types, $callback)
 ## v.2.0.13
     - add missing applyCriteria() in chunk() function
 ## v.2.0.12

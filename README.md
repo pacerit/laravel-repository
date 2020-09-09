@@ -130,6 +130,16 @@ class ExampleController extends Controller {
 * whereDoesntHave($relation, $callback)
 * orWhereDoesntHave($relation, $callback)
 * withCount($relations)
+* doesntHave($relation, $boolean, $callback)
+* orDoesntHave($relation)
+* hasMorph($relation, $types, $operator, $count, $boolean, $callback)
+* orHasMorph($relation, $types, $operator, $count)
+* doesntHaveMorph($relation, $types, $boolean, $callback)
+* orDoesntHaveMorph($relation, $types)
+* whereHasMorph($relation, $types, $callback, $operator, $count)
+* orWhereHasMorph($relation, $types, $callback, $operator, $count)
+* whereDoesntHaveMorph($relation, $types, $callback)
+* orWhereDoesntHaveMorph($relation, $types, $callback)
 
 ##### Additional methods (Laravel only)
 * datatable() - return EloquentDataTable instance for records. In order to user with method,
