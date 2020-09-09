@@ -24,12 +24,14 @@ Framework | Package | Note
 5.8.x     | ^1.x.x  | No longer maintained.
 6.0.x     | ^2.x.x  |
 7.x.x     | ^3.x.x  |
+8.x.x     | ^4.x.x  |
 #### Lumen
 Framework | Package | Note
 :---------|:--------|:-----
 5.8.x     | ^1.1.x  | No longer maintained.
 6.0.x     | ^2.x.x  |
 7.x.x     | ^3.x.x  |
+8.x.x     | ^4.x.x  |
 
 ### Implementation
 To use Repositories, create repository class that:
@@ -58,22 +60,9 @@ class ExampleRepository extends CoreRepository implements ExampleRepositoryInter
      */
     public function entity(): string
     {
-        return ExampleInterface::class;
+        return Example::class;
     }
 
-}
-```
-
-Interface and repository class must be bind in you app ServiceProvider:
-```php
-/**
- * Register any application services.
- *
- * @return void
- */
-public function register()
-{
-    $this->app->bind(ExampleRepositoryInterfaceclass, ExampleRepository::class);
 }
 ```
 
@@ -132,6 +121,16 @@ class ExampleController extends Controller {
 * whereDoesntHave($relation, $callback)
 * orWhereDoesntHave($relation, $callback)
 * withCount($relations)
+* doesntHave($relation, $boolean, $callback)
+* orDoesntHave($relation)
+* hasMorph($relation, $types, $operator, $count, $boolean, $callback)
+* orHasMorph($relation, $types, $operator, $count)
+* doesntHaveMorph($relation, $types, $boolean, $callback)
+* orDoesntHaveMorph($relation, $types)
+* whereHasMorph($relation, $types, $callback, $operator, $count)
+* orWhereHasMorph($relation, $types, $callback, $operator, $count)
+* whereDoesntHaveMorph($relation, $types, $callback)
+* orWhereDoesntHaveMorph($relation, $types, $callback)
 
 ##### Additional methods (Laravel only)
 * datatable() - return EloquentDataTable instance for records. In order to user with method,
