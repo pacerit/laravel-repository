@@ -1,4 +1,6 @@
 # Changelog
+## v.4.0.1
+    - update ext-json version to "*" in composer.json file
 ## v.4.0.0
     - update dependencies for Laravel and Lumen 8.x.x compatibility
     - remove unnecessary composer.lock file

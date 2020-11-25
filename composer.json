@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": "^7.3",
-        "ext-json": "^1.5",
+        "ext-json": "*",
         "ext-libxml": "*",
         "ext-simplexml": "*",
         "illuminate/contracts": "^8.0",
