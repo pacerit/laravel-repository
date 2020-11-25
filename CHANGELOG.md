@@ -1,4 +1,6 @@
 # Changelog
+## v.2.0.15
+    - update ext-json version to "*" in composer.json file
 ## v.2.0.14
     - remove unnecessary composer.lock file
     - add new functions
