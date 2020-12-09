@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class FindWhereNotInCriteria
+ * Class FindWhereNotInCriteria.
  *
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  *

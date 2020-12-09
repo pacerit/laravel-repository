@@ -40,7 +40,7 @@ class DateCriteria extends CoreRepositoryCriteria
      *
      * @param null|string $dateFrom
      * @param null|string $dateTo
-     * @param string $column
+     * @param string      $column
      */
     public function __construct(
         ?string $dateFrom,

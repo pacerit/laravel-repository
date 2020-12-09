@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class FindWhereOrWhereCriteria
+ * Class FindWhereOrWhereCriteria.
  *
  * @author Wiktor Pacer <kontakt@pacerit.pl>
  *
