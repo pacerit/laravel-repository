@@ -1,4 +1,9 @@
 # Changelog
+## v.3.0.10
+    - DateCriteria now accept "column" parameter
+    - add new criteria
+        * FindWhereOrWhereCriteria   
+        * FindWhereNotIn
 ## v.3.0.9
     - update ext-json version to "*" in composer.json file
 ## v.3.0.8

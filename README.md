@@ -152,10 +152,12 @@ List of criteria, provider by default with this package:
 * DateCriteria - search records with given date range (by created_at field)
 * FindWhereCriteria
 * FindWhereInCriteria
+* FindWhereNotInCriteria
 * LimitCriteria
 * OrWhereCriteria
 * Select2Criteria - criteria useful when implementing Select2
 * OffsetCriteria
+* FindWhereOrWhereCriteria
 
 #### Caching
 ___
@@ -176,6 +178,8 @@ of choice. Trait will handle cache for methods:
 * findWhereNotIn()
 * paginate()
 * simplePaginate()
+
+You can user criteria with this functions, and results will be cached.
 
 Repository automatically flush cache, when method create(), updateOrCreate(), update(),
 delete() is call.
@@ -222,7 +226,7 @@ $this-exampleService->getRepository->skipCache()->findWhere(...)
 ```
 
 ##### Disable cache
-To quick disable cache i.ex for debugging, set REPOSITORY_CACHE variable for false in .env
+To quick disable cache i.ex for debugging, set REPOSITORY_CACHE variable to false in .env
 ```dotenv
 REPOSITORY_CACHE=false
 ```
