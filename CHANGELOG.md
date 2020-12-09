@@ -1,4 +1,10 @@
 # Changelog
+## v.4.1.0
+    - compatibility with PHP version 8.x (updated composer.json file)
+    - DateCriteria now accept "column" parameter
+    - add new criteria
+        * FindWhereOrWhereCriteria
+        * FindWhereNotIn
 ## v.4.0.1
     - update ext-json version to "*" in composer.json file
 ## v.4.0.0
