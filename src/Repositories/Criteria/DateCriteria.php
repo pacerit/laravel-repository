@@ -29,17 +29,27 @@ class DateCriteria extends CoreRepositoryCriteria
     private $dateTo;
 
     /**
+     * Column name to search.
+     *
+     * @var string
+     */
+    private $column;
+
+    /**
      * DateCriteria constructor.
      *
      * @param null|string $dateFrom
      * @param null|string $dateTo
+     * @param string      $column
      */
     public function __construct(
         ?string $dateFrom,
-        ?string $dateTo
+        ?string $dateTo,
+        string $column = Model::CREATED_AT
     ) {
         $this->dateFrom = $dateFrom;
         $this->dateTo = $dateTo;
+        $this->column = $column;
     }
 
     /**
@@ -56,11 +66,11 @@ class DateCriteria extends CoreRepositoryCriteria
     public function apply($entity)
     {
         if ($this->dateFrom !== null) {
-            $entity = $entity->where(Model::CREATED_AT, '>=', $this->dateFrom);
+            $entity = $entity->where($this->column, '>=', $this->dateFrom);
         }
 
         if ($this->dateTo !== null) {
-            $entity = $entity->where(Model::CREATED_AT, '<=', $this->dateTo);
+            $entity = $entity->where($this->column, '<=', $this->dateTo);
         }
 
         return $entity;
