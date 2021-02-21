@@ -1,4 +1,10 @@
 # Changelog
+## v.3.0.11
+    - add functions
+        * sum()
+    - add functions to work with cache trait
+        * count()
+        * sum()
 ## v.3.0.10
     - DateCriteria now accept "column" parameter
     - add new criteria

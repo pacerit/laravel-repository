@@ -2,9 +2,11 @@
 
 namespace PacerIT\LaravelRepository\Repositories\Traits;
 
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use PacerIT\LaravelRepository\Repositories\Exceptions\RepositoryEntityException;
 use PacerIT\LaravelRepository\Repositories\Interfaces\CoreRepositoryInterface;
 use ReflectionObject;
 
@@ -530,6 +532,65 @@ trait WithCache
             $this->getCacheTime(),
             function () use ($perPage, $columns, $pageName, $page) {
                 return parent::simplePaginate($perPage, $columns, $pageName, $page);
+            }
+        );
+    }
+
+    /**
+     * Count results.
+     *
+     * @param array $columns
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryEntityException
+     *
+     * @return int
+     *
+     * @author Wiktor Pacer <kontakt@pacerit.pl>
+     *
+     * @since 19/11/2019
+     */
+    public function count(array $columns = ['*']): int
+    {
+        if ($this->skipCache || !$this->cacheActive()) {
+            return parent::count($columns);
+        }
+
+        $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
+
+        // Store or get from cache.
+        return Cache::tags([$this->getTag()])->remember(
+            $cacheKey,
+            $this->getCacheTime(),
+            function () use ($columns) {
+                return parent::count($columns);
+            }
+        );
+    }
+
+    /**
+     * Retrieve the sum of the values of a given column.
+     *
+     * @param string $column
+     *
+     * @return int
+     *
+     * @author Wiktor Pacer
+     */
+    public function sum(string $column)
+    {
+        if ($this->skipCache || !$this->cacheActive()) {
+            return parent::sum($column);
+        }
+
+        $cacheKey = $this->getCacheKey(__FUNCTION__, func_get_args());
+
+        // Store or get from cache.
+        return Cache::tags([$this->getTag()])->remember(
+            $cacheKey,
+            $this->getCacheTime(),
+            function () use ($column) {
+                return parent::sum($column);
             }
         );
     }
