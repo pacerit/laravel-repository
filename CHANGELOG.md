@@ -1,4 +1,10 @@
 # Changelog
+## v.4.1.1
+    - add functions
+        * sum()
+    - add functions to work with cache trait
+        * count()
+        * sum()
 ## v.4.1.0
     - compatibility with PHP version 8.x (updated composer.json file)
     - DateCriteria now accept "column" parameter
