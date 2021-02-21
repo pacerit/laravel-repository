@@ -131,6 +131,7 @@ class ExampleController extends Controller {
 * orWhereHasMorph($relation, $types, $callback, $operator, $count)
 * whereDoesntHaveMorph($relation, $types, $callback)
 * orWhereDoesntHaveMorph($relation, $types, $callback)
+* sum($column)
 
 ##### Additional methods (Laravel only)
 * datatable() - return EloquentDataTable instance for records. In order to user with method,
@@ -138,7 +139,7 @@ you must install suggested "yajra/laravel-datatables-oracle" package, and add "W
 trait in your repository of choice.
 #### Built-in criteria
 List of criteria, provider by default with this package:
-* DateCriteria - search records with given date range (by created_at field)
+* DateCriteria - search records with given date range
 * FindWhereCriteria
 * FindWhereInCriteria
 * FindWhereNotInCriteria
@@ -167,6 +168,8 @@ of choice. Trait will handle cache for methods:
 * findWhereNotIn()
 * paginate()
 * simplePaginate()
+* count()
+* sum()
 
 You can user criteria with this functions, and results will be cached.
 
