@@ -425,6 +425,17 @@ interface CoreRepositoryInterface
     public function count(array $columns = ['*']): int;
 
     /**
+     * Retrieve the sum of the values of a given column.
+     *
+     * @param string $column
+     *
+     * @return mixed
+     *
+     * @author Wiktor Pacer
+     */
+    public function sum(string $column);
+
+    /**
      * Paginate results.
      *
      * @param null   $perPage

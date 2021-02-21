@@ -668,6 +668,26 @@ abstract class CoreRepository implements CoreRepositoryInterface
     }
 
     /**
+     * Retrieve the sum of the values of a given column.
+     *
+     * @param string $column
+     *
+     * @return mixed
+     *
+     * @author Wiktor Pacer
+     */
+    public function sum(string $column)
+    {
+        $this->applyCriteria();
+
+        $results = $this->getEntity()->sum($column);
+
+        $this->makeEntity();
+
+        return $results;
+    }
+
+    /**
      * Paginate results.
      *
      * @param null   $perPage
