@@ -1,4 +1,6 @@
 # Changelog
+## v.5.0.0
+    - update dependencies for Laravel and Lumen 9.x.x compatibility
 ## v.4.1.1
     - add functions
         * sum()
